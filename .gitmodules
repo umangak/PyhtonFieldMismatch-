@@ -1,0 +1,3 @@
+[submodule "cortex-data-foundation"]
+    path = cortex-data-foundation
+    url = https://github.com/GoogleCloudPlatform/cortex-data-foundation.git
