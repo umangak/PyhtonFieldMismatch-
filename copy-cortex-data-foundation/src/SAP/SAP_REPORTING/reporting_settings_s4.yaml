@@ -1,0 +1,169 @@
+bq_independent_objects:
+- sql_file: CurrencyConversion.sql
+  description: Exchange Rate for Currency Conversion
+  type: view
+- sql_file: fiscal_period.sql
+  type: script
+- sql_file: fiscal_case1.sql
+  type: script
+- sql_file: fiscal_case2.sql
+  type: script
+- sql_file: fiscal_case3.sql
+  type: script
+- sql_file: currency_decimal.sql
+  type: script
+- sql_file: currency_conversion.sql
+  type: script
+- sql_file: PlantsMD.sql
+  description: PlantsMD Details
+  type: table
+  table_setting:
+    load_frequency: '@yearly'
+- sql_file: MaterialGroupsMD.sql
+  description: Material Groups Master Data
+  type: table
+  table_setting:
+    load_frequency: '@monthly'
+- sql_file: CompaniesMD.sql
+  description: Company Master Data
+  type: table
+  table_setting:
+    load_frequency: '@yearly'
+- sql_file: StorageLocationsMD.sql
+  description: StorageLocations Text
+  type: table
+  table_setting:
+    load_frequency: '@yearly'
+- sql_file: ValuationAreasMD.sql
+  description: Valuation Area Master Data
+  type: table
+  table_setting:
+    load_frequency: '@yearly'
+- sql_file: ProductHierarchiesMD.sql
+  description: Product Hierarchies Master Data
+  type: table
+  table_setting:
+    load_frequency: '@yearly'
+- sql_file: Languages_T002.sql
+  description: Languages (T002)
+  type: table
+  table_setting:
+    load_frequency: '@yearly'
+- sql_file: MaterialsMD.sql
+  description: Materials Master Data
+  type: table
+  table_setting:
+    load_frequency: '@daily'
+- sql_file: MaterialTypesMD.sql
+  description: Material Types and texts
+  type: table
+  table_setting:
+    load_frequency: '@yearly'
+- sql_file: CurrenciesMD.sql
+  description: Currencies Master Data
+  type: table
+  table_setting:
+    load_frequency: '@yearly'
+- sql_file: CurrencyConvUtil.sql
+  description: Utility View for Currency Conversion (materialized recommended)
+  type: table
+  table_setting:
+    load_frequency: '@yearly'
+- sql_file: MaterialMovementTypesMD.sql
+  description: Material Movement Types
+  type: table
+  table_setting:
+    load_frequency: '@yearly'
+- sql_file: ReasonForMovementTypesMD.sql
+  description: ReasonForMovementTypesMD
+  type: table
+  table_setting:
+    load_frequency: '@yearly'
+- sql_file: SpecialStocksMD.sql
+  description: Special Stocks Master Data
+  type: table
+  table_setting:
+    load_frequency: '@yearly'
+- sql_file: MaterialPlantsMD.sql
+  description: MaterialPlantsMD
+  type: table
+  table_setting:
+    load_frequency: '@yearly'
+- sql_file: MaterialsBatchMD.sql
+  description: Materials Batch Master Data
+  type: table
+  table_setting:
+    load_frequency: '@daily'
+- sql_file: StockCharacteristicsConfig.sql
+  description: Stock Characteristics Config
+  type: script
+- sql_file: StockInHand.sql
+  description: Stock In Hand
+  type: table
+  table_setting:
+    load_frequency: '@daily'
+bq_dependent_objects:
+- sql_file: MaterialsMovement.sql
+  description: Material Movements
+  type: table
+  table_setting:
+    load_frequency: '@daily'
+- sql_file: Stock_NonValuated.sql
+  description: Non-valuated stock levels per plant and Storage location
+  type: table
+  table_setting:
+    load_frequency: '@daily'
+- sql_file: Stock_PerPlant.sql
+  description: Stock information per plant
+  type: table
+  table_setting:
+    load_frequency: '@daily'
+- sql_file: MaterialLedger.sql
+  description: Material Ledger
+  type: table
+  table_setting:
+    load_frequency: '@daily'
+- sql_file: StockWeeklySnapshots.sql
+  description: Stock Weekly Snapshots
+  type: table
+  table_setting:
+    load_frequency: '@daily'
+    partition_details:
+      column: WeekEndDate
+      partition_type: time
+      time_grain: day
+    cluster_details:
+      columns:
+      - Client_MANDT
+      - MaterialNumber_MATNR
+      - Plant_WERKS
+- sql_file: StockMonthlySnapshots.sql
+  description: Stock Monthly Snapshots
+  type: table
+  table_setting:
+    load_frequency: '@weekly'
+    partition_details:
+      column: MonthEndDate
+      partition_type: time
+      time_grain: month
+    cluster_details:
+      columns:
+      - Client_MANDT
+      - MaterialNumber_MATNR
+      - Plant_WERKS
+- sql_file: InventoryKeyMetrics.sql
+  type: table
+  table_setting:
+    load_frequency: '@weekly'
+    cluster_details:
+      columns:
+      - CompanyCode_BUKRS
+      - FiscalYear
+- sql_file: InventoryByPlant.sql
+  type: table
+  table_setting:
+    load_frequency: '@daily'
+    cluster_details:
+      columns:
+      - CompanyCode_BUKRS
+      - FiscalYear

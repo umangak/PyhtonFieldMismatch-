@@ -1,0 +1,7 @@
+dawgs:
+- id: currency_conversion
+  path: local_k9/currency_conversion
+- id: inventory_snapshots
+  path: local_k9/inventory_snapshots
+- id: prod_hierarchy_texts
+  path: local_k9/prod_hierarchy_texts

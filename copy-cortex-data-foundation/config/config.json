@@ -1,0 +1,115 @@
+{
+    "testData": false,
+    "deploySAP": true,
+    "deploySFDC": false,
+    "deployMarketing": false,
+    "deployDataMesh": true,
+    "turboMode": true,
+    "projectIdSource": "prj-n-007-cameco-bizintel-2c86",
+    "projectIdTarget": "prj-n-007-cameco-bizintel-2c86",
+    "targetBucket": "cortex_sap_inventory-dags",
+    "location": "northamerica-northeast1",
+    "languages": [
+        "E"
+    ],
+    "currencies": [
+        "USD"
+    ],
+    "testDataProject": "kittycorn-public",
+    "k9": {
+        "datasets": {
+            "processing": "K9_PROCESSING",
+            "reporting": "K9_REPORTING"
+        }
+    },
+    "DataMesh": {
+        "deployDescriptions": true,
+        "deployLakes": false,
+        "deployCatalog": false,
+        "deployACLs": false
+    },
+    "SAP": {
+        "deployCDC": true,
+        "datasets": {
+            "cdc": "cortex_saps4_inventory_cdc",
+            "raw": "cortex_saps4_inventory_raw",
+            "ml": "cortex_saps4_inventory_ml_models",
+            "reporting": "cortex_saps4_inventory_reporting"
+        },
+        "SQLFlavor": "s4",
+        "mandt": "300"
+    },
+    "SFDC": {
+        "deployCDC": true,
+        "createMappingViews": true,
+        "createPlaceholders": true,
+        "datasets": {
+            "cdc": "",
+            "raw": "",
+            "reporting": "REPORTING_SFDC"
+        }
+    },
+    "marketing": {
+        "deployGoogleAds": true,
+        "deployCM360": true,
+        "deployTikTok": true,
+        "deployLiveRamp": true,
+        "deployMeta": true,
+        "deploySFMC": true,
+        "dataflowRegion": "",
+        "GoogleAds": {
+            "deployCDC": true,
+            "lookbackDays": 180,
+            "datasets": {
+                "cdc": "",
+                "raw": "",
+                "reporting": "REPORTING_GoogleAds"
+            }
+        },
+        "CM360": {
+            "deployCDC": true,
+            "dataTransferBucket": "",
+            "datasets": {
+                "cdc": "",
+                "raw": "",
+                "reporting": "REPORTING_CM360"
+            }
+        },
+        "TikTok": {
+            "deployCDC": true,
+            "datasets": {
+                "cdc": "",
+                "raw": "",
+                "reporting": "REPORTING_TikTok"
+            }
+        },
+        "LiveRamp": {
+            "datasets": {
+                "cdc": ""
+            }
+        },
+        "Meta": {
+            "deployCDC": true,
+            "datasets": {
+                "cdc": "",
+                "raw": "",
+                "reporting": "REPORTING_Meta"
+            }
+        },
+        "SFMC": {
+            "deployCDC": true,
+            "fileTransferBucket": "",
+            "datasets": {
+                "cdc": "",
+                "raw": "",
+                "reporting": "REPORTING_SFMC"
+            }
+        }
+    },
+    "shareWithCredly": false,
+    "userInfo": {
+        "email": "",
+        "firstName": "",
+        "lastName": ""
+    }
+}

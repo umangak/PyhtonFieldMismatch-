@@ -1,0 +1,7 @@
+bq_independent_objects:
+- k9_id: currency_conversion
+  type: k9_dawg
+- k9_id: inventory_snapshots
+  type: k9_dawg
+- k9_id: prod_hierarchy_texts
+  type: k9_dawg
